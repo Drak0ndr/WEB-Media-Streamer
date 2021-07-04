@@ -10,7 +10,7 @@ let time = setInterval(() => {
         }
     })
         .then(res => {
-            console.log(res)
+            //console.log(res)
             res.text().then(data2 => {
                 //console.log(data2)
                 base = data2.replaceAll('"', '')
