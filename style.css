@@ -11,7 +11,7 @@ body {
 }
 .raspImg {
     width: 90%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     position: relative;
     background-size: contain;
@@ -66,5 +66,5 @@ body {
 }
 
 .hand:hover {
-    width: 33.1vw;
+    width: 33.2vw;
 }

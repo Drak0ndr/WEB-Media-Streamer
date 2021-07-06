@@ -1,10 +1,10 @@
-const img = document.querySelector('.RaspImg')
+const img = document.querySelector('.raspImg')
 let base = 0
 // http://localhost:3000
-//http://b057f142b254.ngrok.io/
+//http://172.16.1.87:3000
 //http://192.168.1.41:3000
 let time = setInterval(() => {
-    fetch('http://172.16.1.87:3000', {
+    fetch('http://localhost:3000', {
         headers: {
             'Content-Type': 'text/plain'
         }
