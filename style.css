@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+.raspImg {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.raspVideoControl {
+    position:absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 85vw;
+    height: 70vh;
+}
+
+.videoControl {
+    width: 5%;
+    height: 100%;
+    background-color: lightgray;
+}
+
+.tel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: lightblue;
+    width: 15vw;
+    height: 70vh;
+}
+
+.hands {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightcyan;
+    padding: 0;
+}
+
+.hand {
+    width: 33vw;
+    height: 30vh;
+    background-color: lightslategray;
+}
