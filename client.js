@@ -4,7 +4,7 @@ let base = 0
 //http://b057f142b254.ngrok.io/
 //http://192.168.1.41:3000
 let time = setInterval(() => {
-    fetch('http://localhost:3000', {
+    fetch('http://172.16.1.87:3000', {
         headers: {
             'Content-Type': 'text/plain'
         }
