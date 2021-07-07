@@ -1,0 +1,22 @@
+{
+  "name": "web-media-streamer",
+  "version": "1.1.0",
+  "description": "- Чтобы приложение заработало нужно запусть файл app.js командой node app.js, картинка служит в качестве примера и должна находиться в директории сервера т.е app.js\r     (по умолчанию берётся картинка с именем Test.jpg)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drak0ndr/WEB-Media-Streamer.git"
+  },
+  "author": "Drakondr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drak0ndr/WEB-Media-Streamer/issues"
+  },
+  "homepage": "https://github.com/Drak0ndr/WEB-Media-Streamer#readme",
+  "dependencies": {
+    "systeminformation": "^5.7.7"
+  }
+}

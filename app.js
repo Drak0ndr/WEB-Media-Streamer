@@ -1,6 +1,8 @@
 var fs = require('fs')
 var http = require('http')
 var img = 'powered by Drakondr'
+var sysState = {}
+const si = require('systeminformation')
 var update = setInterval(function() {
 img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
 //console.log('update')
@@ -16,3 +18,8 @@ http.createServer(function(req, res) {
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
 console.log('Сервер работает')
+si.battery()
+  .then(data => console.log(data))
+
+  si.cpuTemperature()
+  .then(data => console.log(data))
