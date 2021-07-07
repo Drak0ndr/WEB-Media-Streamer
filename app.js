@@ -18,11 +18,18 @@ http.createServer(function(req, res) {
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
 console.log('Сервер работает')
-si.battery()
+function updateSysState() {
+	si.battery()
   .then(data => {
-	//sysState.battery = data.persent
+	sysState.battery = data.percent
+	console.log(sysState)
 	console.log(data)
 	})
 
-  si.cpuTemperature()
-  .then(data => console.log(data))
+si.cpuTemperature()
+  .then(data => {
+	  sysState.cpuTemp = data.main
+	  console.log(data)
+	})
+}
+updateSysState()
