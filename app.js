@@ -17,6 +17,14 @@ http.createServer(function(req, res) {
   	res.end(img);
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
+
+http.createServer(function(req, res) {
+	res.writeHead(200, { 
+		'Content-Type': 'text/plain',
+		'Access-Control-Allow-Origin': '*'
+	});
+  	res.end(sysState);
+}).listen(3001, '0.0.0.0')
 console.log('Сервер работает')
 function updateSysState() {
 	si.battery()
