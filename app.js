@@ -23,13 +23,28 @@ function updateSysState() {
   .then(data => {
 	sysState.battery = data.percent
 	console.log(sysState)
-	console.log(data)
+	//console.log(data)
 	})
 
-si.cpuTemperature()
+	si.cpuTemperature()
   .then(data => {
 	  sysState.cpuTemp = data.main
 	  console.log(data)
+	})
+
+	si.mem()
+	.then(data => {
+		//console.log((data.used / 1024 / 1024 / 1024)/(data.total / 1024 / 1024 / 1024) * 100)
+		sysState.useMem = Math.floor((data.used / 1024 / 1024 / 1024)/(data.total / 1024 / 1024 / 1024) * 100)
+	})
+	si.currentLoad()
+	.then(data => {
+		console.log(data)
+	})
+
+	si.fullLoad()
+	.then(data => {
+		console.log(data)
 	})
 }
 updateSysState()
