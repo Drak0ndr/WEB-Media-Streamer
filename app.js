@@ -19,7 +19,10 @@ http.createServer(function(req, res) {
 }).listen(3000, '0.0.0.0')
 console.log('Сервер работает')
 si.battery()
-  .then(data => console.log(data))
+  .then(data => {
+	//sysState.battery = data.persent
+	console.log(data)
+	})
 
   si.cpuTemperature()
   .then(data => console.log(data))
