@@ -6,10 +6,10 @@ let photo = setInterval(function() {
             console.log(`error: ${error.message}`);
             return;
         }
-        // if (stderr) {
-        //     console.log(`stderr: ${stderr}`);
-        //     return;
-        // }
-       // console.log(`stdout: ${stdout}`);
+         if (stderr) {
+             console.log(`stderr: ${stderr}`);
+             return;
+         }
+        console.log(`stdout: ${stdout}`);
     })
 },40)
