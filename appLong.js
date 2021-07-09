@@ -3,12 +3,14 @@ var http = require('http')
 var img = 'powered by Drakondr'
 var sysState = {}
 const si = require('systeminformation')
-var update = setInterval(function() {
+ function updateImg() {
 	//console.time('image')
-	img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
+	img =  JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
 	//console.timeEnd('image')
-//console.log('update')
-},40)
+	//console.log('update')
+
+}
+updateImg()
 
 
 http.createServer(function(req, res) {
@@ -18,6 +20,7 @@ http.createServer(function(req, res) {
 		'Access-Control-Allow-Origin': '*'
 	});
 		res.end(img)
+		updateImg()
 	  console.timeEnd('serv')
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
