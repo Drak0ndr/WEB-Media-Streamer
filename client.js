@@ -8,9 +8,8 @@ const memUse = document.querySelector('.memUse')
 //http://192.168.1.41:3000
 
 function updateState(obj) {
-    cpuTemp.textContent = obj.cpuTemp
-    charg.textContent = obj.battery
-    memUse.textContent = obj.useMem
+    cpuTemp.textContent = `${obj.cpuTemp}℃`
+    charg.textContent = `${obj.battery}%`
 }
 
 let time = setInterval(() => {
@@ -29,3 +28,20 @@ let time = setInterval(() => {
             })
         })
 },40)
+
+let sysTime = setInterval(() => {
+    fetch('http://localhost:3001', {
+        headers: {
+            'Content-Type': 'text/plain'
+        }
+    })
+        .then(res => {
+            res.json().then(data => {
+                console.log(data)
+				if (data.cpuTemp == null) {
+					data.cpuTemp = '...'
+				}
+				updateState(data)
+            })
+        })
+},1000)

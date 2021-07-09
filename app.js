@@ -23,7 +23,7 @@ http.createServer(function(req, res) {
 		'Content-Type': 'text/plain',
 		'Access-Control-Allow-Origin': '*'
 	});
-  	res.end(sysState);
+  	res.end(JSON.stringify(sysState));
 }).listen(3001, '0.0.0.0')
 console.log('Сервер работает')
 function updateSysState() {
@@ -39,5 +39,7 @@ function updateSysState() {
 	  sysState.cpuTemp = data.main
 	  //console.log(data)
 	})
+	console.log(sysState)
 }
 updateSysState()
+var telUpdate = setInterval(updateSysState, 1000)
