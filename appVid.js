@@ -2,29 +2,20 @@ var fs = require('fs')
 var http = require('http')
 var img = 'powered by Drakondr'
 var sysState = {}
-var oldImg = ''
 const si = require('systeminformation')
 var update = setInterval(function() {
-	//console.time('image')
-	img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
-	//console.timeEnd('image')
+img = JSON.stringify(fs.readFileSync('Test.webm', 'base64'))
+console.log(img)
 //console.log('update')
-},40)
+},1000)
 
 
 http.createServer(function(req, res) {
-	console.time('serv')
 	res.writeHead(200, { 
 		'Content-Type': 'text/plain',
 		'Access-Control-Allow-Origin': '*'
 	});
-	if(oldImg == img) {
-		res.end(0)
-	} else {
-		res.end(img)
-		oldImg = img
-	}
-	  console.timeEnd('serv')
+  	res.end(img);
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
 

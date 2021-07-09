@@ -1,6 +1,5 @@
 const img = document.querySelector('.raspImg')
 let base = 0
-let mediaTime = 40
 const cpuTemp = document.querySelector('.cpuTemp')
 const charg = document.querySelector('.charg')
 const memUse = document.querySelector('.memUse')
@@ -22,18 +21,13 @@ let time = setInterval(() => {
         .then(res => {
             //console.log(res)
             res.text().then(data2 => {
-                if(data2 == 0) {
-                    mediaTime = 100
-                } else {
-                mediaTime = 40
                 //console.log(data2)
                 base = data2.replaceAll('"', '')
                 //console.log(base)
-                img.style.backgroundImage = `url(data:image/jpeg;base64,${base})`
-                }
+                img.src = `data:video/webm;base64,${base}`
             })
         })
-},mediaTime)
+},1000)
 
 let sysTime = setInterval(() => {
     fetch('http://localhost:3001', {
@@ -44,14 +38,9 @@ let sysTime = setInterval(() => {
         .then(res => {
             res.json().then(data => {
                 console.log(data)
-				if (data.cpuTemp == null || data.cpuTemp == undefined) {
+				if (data.cpuTemp == null) {
 					data.cpuTemp = '...'
-				} else {
-                    +data.cpuTemp.toFixed(1)
-                }
-                if(data.battery == null || data.battery == undefined) {
-                    data.battery = '...'
-                }
+				}
 				updateState(data)
             })
         })
