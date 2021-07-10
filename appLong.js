@@ -1,14 +1,27 @@
 var fs = require('fs')
 var http = require('http')
 var img = 'powered by Drakondr'
+var oldImg = ''
 var sysState = {}
+const { exec } = require("child_process") 
 const si = require('systeminformation')
  function updateImg() {
+	exec("fswebcam -r 640x360 --no-banner Test.jpg", (error, stdout, stderr) => {
+        if (error) {
+            //console.log(`error: ${error.message}`);
+            return;
+        }
+         if (stderr) {
+             //console.log(`stderr: ${stderr}`);
+             return;
+         }
+        //console.log(`stdout: ${stdout}`);
+    })
 	//console.time('image')
 	img =  JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
 	//console.timeEnd('image')
 	//console.log('update')
-
+	
 }
 updateImg()
 
@@ -19,7 +32,14 @@ http.createServer(function(req, res) {
 		'Content-Type': 'text/plain',
 		'Access-Control-Allow-Origin': '*'
 	});
+	if(img != oldImg) {
 		res.end(img)
+		oldImg = img
+	} else {
+		res.end(0)
+		//console.log(0)
+	}
+
 		updateImg()
 	  console.timeEnd('serv')
 	//console.log('request')

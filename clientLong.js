@@ -13,6 +13,7 @@ function updateState(obj) {
     charg.textContent = `${obj.battery}%`
 }
 imgFetch()
+
 function imgFetch() {
     fetch('http://localhost:3000', {
         headers: {
@@ -22,10 +23,16 @@ function imgFetch() {
         .then(res => {
             //console.log(res)
             res.text().then(data2 => {
+                if(data2 != 0) {
                 //console.log(data2)
+                
                 base = data2.replaceAll('"', '')
                 //console.log(base)
                 img.style.backgroundImage = `url(data:image/jpeg;base64,${base})`
+                
+                } else {
+                    console.log('0')
+                }
                 imgFetch()
             })
         })
@@ -45,7 +52,7 @@ let sysTime = setInterval(() => {
 				if (data.cpuTemp == null || data.cpuTemp == undefined) {
 					data.cpuTemp = '...'
 				} else {
-                    +data.cpuTemp.toFixed(1)
+                    data.cpuTemp = +data.cpuTemp.toFixed(1)
                 }
                 if(data.battery == null || data.battery == undefined) {
                     data.battery = '...'
