@@ -3,7 +3,6 @@ let base = 0
 let mediaTime = 40
 const cpuTemp = document.querySelector('.cpuTemp')
 const charg = document.querySelector('.charg')
-const memUse = document.querySelector('.memUse')
 // http://localhost:3000
 //http://172.16.1.87:3000
 //http://192.168.1.41:3000

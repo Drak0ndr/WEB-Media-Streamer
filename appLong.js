@@ -27,7 +27,7 @@ updateImg()
 
 
 http.createServer(function(req, res) {
-	console.time('serv')
+	//console.time('serv')
 	res.writeHead(200, { 
 		'Content-Type': 'text/plain',
 		'Access-Control-Allow-Origin': '*'
@@ -41,7 +41,7 @@ http.createServer(function(req, res) {
 	}
 
 		updateImg()
-	  console.timeEnd('serv')
+	  //console.timeEnd('serv')
 	//console.log('request')
 }).listen(3000, '0.0.0.0')
 
@@ -52,6 +52,25 @@ http.createServer(function(req, res) {
 	});
   	res.end(JSON.stringify(sysState));
 }).listen(3001, '0.0.0.0')
+
+http.createServer(function(req, res) {
+	res.writeHead(200, { 
+		'Content-Type': 'text/plain',
+		'Access-Control-Allow-Origin': '*'
+	});
+
+		let body = ''
+        req.on('data', chunk => {
+            body += chunk.toString()
+        })
+        req.on('end', () => {
+			console.time('json')
+			fs.writeFileSync('sysState.json',body);
+			console.timeEnd('json')
+            console.log(body)
+        })
+	//console.log('request')
+}).listen(3256, '0.0.0.0')
 console.log('Сервер работает')
 function updateSysState() {
 	si.battery()
@@ -66,7 +85,7 @@ function updateSysState() {
 	  sysState.cpuTemp = data.main
 	  //console.log(data)
 	})
-	console.log(sysState)
+	//console.log(sysState)
 }
 updateSysState()
 var telUpdate = setInterval(updateSysState, 1000)

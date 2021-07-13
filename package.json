@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Drak0ndr/WEB-Media-Streamer#readme",
   "dependencies": {
-    "systeminformation": "^5.7.7"
+    "systeminformation": "^5.7.7",
+    "ws": "^7.5.3"
   }
 }
