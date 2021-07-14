@@ -75,10 +75,6 @@ body {
     justify-content: space-around;
 }
 
-.hand:hover {
-    width: 49.8vw;
-}
-
 .hand .joystick{
     margin-top: 0;
     scale: 0.93;
@@ -123,7 +119,7 @@ body {
 }
 
 .joystick p {
-    background-color: #6d6d6d;
+    background-color: #5e5e5e;
     border-radius: 50%;
     width: 4vw;
     height: 4vw;
@@ -131,7 +127,9 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.joystick p:hover {
+    background-color: #6d6d6d;
+}
 .betweenJoystik {
     margin-top: 1vw;
     margin-bottom: 1.1vw;
@@ -152,13 +150,17 @@ body {
 }
 
 .miniJoystick p {
-    background-color: #6d6d6d;
+    background-color: #5e5e5e;
     border-radius: 50%;
     width: 3vw;
     height: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.miniJoystick p:hover {
+    background-color: #6d6d6d;
 }
 
 .centerbtn {

@@ -1,24 +1,30 @@
-const camControls = document.querySelectorAll('.videoControl')
+const joystickPs = document.querySelectorAll('p')
+joystickPs.forEach(item => {
+    item.setAttribute("data-Key", `Key${item.textContent}`)
+})
 
 let sysState = {
-    camDir: 0
+    keys: {
+
+    }
 }
 
-camControls.forEach(item => {
-    item.addEventListener('mouseenter', event => {
-        if(event.target.classList.contains('videoControl')) {
-            sysState.camDir = event.target.dataset.dir
-            console.log(sysState)
-            fetchState()
-        }
-    })
-
-    item.addEventListener('mouseleave', event => {
-        sysState.camDir = 0
-        console.log(sysState)
-        fetchState()
-    })
+document.addEventListener('keydown', e => {
+    changeKeys(e)
 })
+
+document.addEventListener('keyup', e => {
+    changeKeys(e)
+})
+
+function changeKeys(e) {
+    if(e.type == 'keydown') {
+        sysState.keys[e.code] = true
+    } else {
+        sysState.keys[e.code] = false
+    }
+    console.log(sysState.keys)
+}
 
 function fetchState() {
     fetch('http://localhost:3256', {
