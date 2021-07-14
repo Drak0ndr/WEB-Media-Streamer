@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+.raspImg {
+    display: flex;
+    position: relative;
+    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.raspVideoControl {
+    position:absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 85vw;
+    height: 70vh;
+}
+
+.videoControl {
+    width: 5%;
+    height: 100%;
+    background-color: lightgray;
+    opacity: 0.7;
+}
+
+.videoControl:hover {
+    opacity: 1;
+}
+
+.tel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #e4f1f5;
+    width: 15vw;
+    height: 70vh;
+}
+
+.tel h2 {
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.hands {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightcyan;
+    padding: 0;
+}
+
+.hand {
+    width: 100vw;
+    height: 30vh;
+    background-color: lightslategray;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hand .joystick{
+    margin-top: 0;
+    scale: 0.93;
+}
+.hand .miniJoystick {
+    margin-top: 0;
+    scale: 0.93; 
+}
+.tel div {
+    width: 100%;
+    font-size: 1.6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1vh;
+}
+
+.handControl {
+    width: 20%;
+    height: 100%;
+    background-color: #7a7e82;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.joystick {
+    margin-top: 1vh;
+    background-color: #424242;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    color: #d0d0d0;
+    font-size: 2.5vw;
+    padding: 0.5vw;
+}
+
+.centerJoystik {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick p {
+    background-color: #5e5e5e;
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.joystick p:hover {
+    background-color: #6d6d6d;
+}
+.betweenJoystik {
+    margin-top: 1vw;
+    margin-bottom: 1.1vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.miniJoystick {
+    margin-top: 1vh;
+    background-color: #424242;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    color: #d0d0d0;
+    font-size: 2vw;
+    padding: 0.5vw;
+    position: relative;
+}
+
+.miniJoystick p {
+    background-color: #5e5e5e;
+    border-radius: 50%;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniJoystick p:hover {
+    background-color: #6d6d6d;
+}
+
+.centerbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystickHeart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.miniJoystick .betweenJoystik {
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+}
+
+.centerbtn:nth-child(1) {
+    margin-bottom: 0.3vw;
+}

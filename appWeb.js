@@ -24,6 +24,9 @@ function onConnect(wsClient) {
 	//console.log(wsServer.clients)
 	// отправка приветственного сообщения клиенту
 	//wsClient.send('Привет');
+	wsServer.clients.forEach(client => {
+		client.send(img)
+	})
 	wsClient.on('message', function (message) {
 		/* обработчик сообщений от клиента */
 		console.log(`client message: ${message}`)
