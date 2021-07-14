@@ -1,5 +1,18 @@
 const sharp = require('sharp');
-console.time('webp')
-sharp('cosmo.jpg')
-.toFile('output.webp', (err, info) => {});
+var fs = require('fs')
+let img = 0
+setInterval(() => {
+  console.time('webp')
+
+	sharp('cosmo.jpg')
+ .toFile('output.webp', (err, info) => {
+    //img = JSON.stringify(fs.readFileSync('output.webp', 'base64')) 
+    //console.log(img)
+  })
+
 console.timeEnd('webp')
+}, 0)
+
+
+  
+  

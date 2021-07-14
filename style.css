@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 .raspImg {
-    width: 90%;
+    width: 80%;
     height: 100%;
     display: flex;
     position: relative;
@@ -67,15 +67,26 @@ body {
 }
 
 .hand {
-    width: 33vw;
+    width: 49.7vw;
     height: 30vh;
     background-color: lightslategray;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .hand:hover {
-    width: 33.2vw;
+    width: 49.8vw;
 }
 
+.hand .joystick{
+    margin-top: 0;
+    scale: 0.93;
+}
+.hand .miniJoystick {
+    margin-top: 0;
+    scale: 0.93; 
+}
 .tel div {
     width: 100%;
     font-size: 1.6vw;
@@ -85,3 +96,89 @@ body {
     margin-bottom: 1vh;
 }
 
+.handControl {
+    width: 20%;
+    height: 100%;
+    background-color: #7a7e82;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.joystick {
+    margin-top: 1vh;
+    background-color: #424242;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    color: #d0d0d0;
+    font-size: 2.5vw;
+    padding: 0.5vw;
+}
+
+.centerJoystik {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick p {
+    background-color: #6d6d6d;
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.betweenJoystik {
+    margin-top: 1vw;
+    margin-bottom: 1.1vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.miniJoystick {
+    margin-top: 1vh;
+    background-color: #424242;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    color: #d0d0d0;
+    font-size: 2vw;
+    padding: 0.5vw;
+    position: relative;
+}
+
+.miniJoystick p {
+    background-color: #6d6d6d;
+    border-radius: 50%;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystickHeart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.miniJoystick .betweenJoystik {
+    margin-top: 2.5vw;
+    margin-bottom: 2.5vw;
+}
+
+.centerbtn:nth-child(1) {
+    margin-bottom: 0.3vw;
+}

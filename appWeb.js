@@ -20,9 +20,10 @@ wsServer.on('connection', onConnect);
 
 function onConnect(wsClient) {
 	console.log('Новый пользователь');
+	//updateImg()
 	//console.log(wsServer.clients)
 	// отправка приветственного сообщения клиенту
-	wsClient.send('Привет');
+	//wsClient.send('Привет');
 	wsClient.on('message', function (message) {
 		/* обработчик сообщений от клиента */
 		console.log(`client message: ${message}`)
@@ -54,10 +55,11 @@ http.createServer(function (req, res) {
 		body += chunk.toString()
 	})
 	req.on('end', () => {
-		console.time('json')
-		fs.writeFileSync('sysState.json', body);
-		console.timeEnd('json')
+		//console.time('json')
+		//fs.writeFileSync('sysState.json', body);
+		//console.timeEnd('json')
 		console.log(body)
+		res.end('ok')
 	})
 	//console.log('request')
 }).listen(3256, '0.0.0.0')
