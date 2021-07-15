@@ -88,6 +88,7 @@ updateSysState()
 var telUpdate = setInterval(updateSysState, 1000)
 
 function updateImg() {
+	console.time('updateImg')
 	exec("fswebcam -r 640x360 --no-banner Test.jpg", (error, stdout, stderr) => {
 		if (error) {
 			//console.log(`error: ${error.message}`);
@@ -105,6 +106,7 @@ function updateImg() {
 	//console.timeEnd('image')
 	//console.log('update')
 	//console.log('img')
+	console.timeEnd('updateImg')
 	setTimeout(updateImg, 0)
 
 }
@@ -113,10 +115,8 @@ updateImg()
 function imgBroadcast(image) {
 	if (image != oldImg) {
 		wsServer.clients.forEach(client => {
-		console.time('send')
 		client.send(image)
 		oldImg = image
-		console.timeEnd('send')
 	})
 	}
 
