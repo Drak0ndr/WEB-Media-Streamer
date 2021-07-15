@@ -24,6 +24,7 @@ function changeKeys(e) {
         sysState.keys[e.code] = false
     }
     console.log(sysState.keys)
+    fetchState()
 }
 
 function fetchState() {
@@ -32,6 +33,6 @@ function fetchState() {
         headers: {
             'Content-Type': 'text/plain'
         },
-        body: JSON.stringify(sysState)
+        body: JSON.stringify(sysState.keys)
     })
 }
