@@ -89,20 +89,16 @@ var telUpdate = setInterval(updateSysState, 1000)
 
 function updateImg() {
 	console.time('updateImg')
-	exec("fswebcam -r 640x360 --no-banner Test.jpg", (error, stdout, stderr) => {
-		if (error) {
-			//console.log(`error: ${error.message}`);
-			return;
-		}
-		if (stderr) {
-			//console.log(`stderr: ${stderr}`);
-			return;
-		}
-		//console.log(`stdout: ${stdout}`);
-	})
+	console.time('photo')
+	exec("fswebcam -r 640x360 --no-banner Test.jpg", () => {})
+	console.timeEnd('photo')
 	//console.time('image')
-	img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
+	console.time('read')
+	img = JSON.stringify(fs.readFileSync('Test2.jpg', 'base64'))
+	console.timeEnd('read')
+	console.time('send')
 	imgBroadcast(img)
+	console.timeEnd('send')
 	//console.timeEnd('image')
 	//console.log('update')
 	//console.log('img')
