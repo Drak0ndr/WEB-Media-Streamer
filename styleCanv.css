@@ -75,11 +75,11 @@ body {
 
 .hand .joystick{
     margin-top: 0;
-    scale: 0.93;
+    transform: scale(0.93);
 }
 .hand .miniJoystick {
     margin-top: 0;
-    scale: 0.93; 
+    transform: scale(0.93); 
 }
 .tel div {
     width: 100%;

@@ -25,7 +25,7 @@ function deadHand() {
   };
 
   socket.onmessage = function (event) {
-    console.log(`[message] Данные получены с сервера: ${event.data}`);
+    console.log(`[message] Данные получены с сервера:`);
 
     //console.log(data2)
 
@@ -57,24 +57,65 @@ function deadHand() {
 }
 deadHand()
 
-let sysTime = setInterval(() => {
-  fetch('http://localhost:3001', {
-      headers: {
-        'Content-Type': 'text/plain'
-      }
-    })
-    .then(res => {
-      res.json().then(data => {
-        console.log(data)
-        if (data.cpuTemp == null || data.cpuTemp == undefined) {
-          data.cpuTemp = '...'
+let sysSocket = new WebSocket('ws://localhost:9001');
+
+
+function deadHandSys() {
+  sysSocket.onopen = function (e) {
+
+  };
+
+  sysSocket.onmessage = function (event) {
+    let sysState = JSON.parse(event.data)
+    console.log(sysState);
+            if (sysState.cpuTemp == null || sysState.cpuTemp == undefined) {
+              sysState.cpuTemp = '...'
         } else {
-          data.cpuTemp = +data.cpuTemp.toFixed(1)
+          sysState.cpuTemp = +data.cpuTemp.toFixed(1)
         }
-        if (data.battery == null || data.battery == undefined) {
-          data.battery = '...'
+        if (sysState.battery == null || sysState.battery == undefined) {
+          sysState.battery = '...'
         }
-        updateState(data)
-      })
-    })
-}, 2000)
+
+        updateState(sysState)
+  };
+
+  sysSocket.onclose = function (event) {
+    if (event.wasClean) {
+      console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+    } else {
+      // например, сервер убил процесс или сеть недоступна
+      // обычно в этом случае event.code 1006
+      console.log('[close] Соединение прервано');
+      socket = new WebSocket('ws://localhost:9001');
+      deadHandSys()
+    }
+  };
+
+  socket.onerror = function (error) {
+    console.log(`[error] ${error.message}`);
+  };
+}
+deadHandSys()
+
+// let sysTime = setInterval(() => {
+//   fetch('http://localhost:3001', {
+//       headers: {
+//         'Content-Type': 'text/plain'
+//       }
+//     })
+//     .then(res => {
+//       res.json().then(data => {
+//         console.log(data)
+//         if (data.cpuTemp == null || data.cpuTemp == undefined) {
+//           data.cpuTemp = '...'
+//         } else {
+//           data.cpuTemp = +data.cpuTemp.toFixed(1)
+//         }
+//         if (data.battery == null || data.battery == undefined) {
+//           data.battery = '...'
+//         }
+//         updateState(data)
+//       })
+//     })
+// }, 2000)

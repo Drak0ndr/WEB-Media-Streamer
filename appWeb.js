@@ -83,8 +83,8 @@ function updateSysState() {
 			//console.log(data)
 		})
 	//console.log(sysState)
+	sysBroadcast(sysState)
 }
-updateSysState()
 var telUpdate = setInterval(updateSysState, 1000)
 
 function updateImg() {
@@ -94,7 +94,7 @@ function updateImg() {
 	console.timeEnd('photo')
 	//console.time('image')
 	console.time('read')
-	img = JSON.stringify(fs.readFileSync('Test2.jpg', 'base64'))
+	img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
 	console.timeEnd('read')
 	console.time('send')
 	imgBroadcast(img)
@@ -115,5 +115,19 @@ function imgBroadcast(image) {
 		oldImg = image
 	})
 	}
+
+}
+
+var wsServerSys = new WebSocket.Server({
+	port: 9001
+});
+
+wsServerSys.on('connection', onConnect);
+
+function sysBroadcast(sys) {
+	wsServerSys.clients.forEach(client => {
+		client.send(JSON.stringify(sys))
+	})
+
 
 }
