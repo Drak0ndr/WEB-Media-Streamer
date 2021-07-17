@@ -71,7 +71,7 @@ function deadHandSys() {
             if (sysState.cpuTemp == null || sysState.cpuTemp == undefined) {
               sysState.cpuTemp = '...'
         } else {
-          sysState.cpuTemp = +data.cpuTemp.toFixed(1)
+          sysState.cpuTemp = +sysState.cpuTemp.toFixed(1)
         }
         if (sysState.battery == null || sysState.battery == undefined) {
           sysState.battery = '...'
