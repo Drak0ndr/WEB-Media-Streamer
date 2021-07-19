@@ -109,12 +109,12 @@ function updateImg() {
 updateImg()
 
 function imgBroadcast(image) {
-	if (image != oldImg) {
+	//if (image != oldImg) {
 		wsServer.clients.forEach(client => {
 		client.send(image)
 		oldImg = image
 	})
-	}
+	//}
 
 }
 

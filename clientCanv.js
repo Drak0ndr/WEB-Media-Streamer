@@ -1,5 +1,5 @@
 let socket = new WebSocket('ws://localhost:9000');
-
+let fps = 0
 const img = document.querySelector('.raspImg')
 let base = 0
 let mediaTime = 40
@@ -25,10 +25,8 @@ function deadHand() {
   };
 
   socket.onmessage = function (event) {
-    console.log(`[message] Данные получены с сервера:`);
-
-    //console.log(data2)
-
+    //console.log(`[message] Данные получены с сервера:`);
+    fps++
     base = event.data.replaceAll('"', '')
     //console.log(base)
     imgCanv.onload = function() {
@@ -46,6 +44,10 @@ function deadHand() {
       // например, сервер убил процесс или сеть недоступна
       // обычно в этом случае event.code 1006
       console.log('[close] Соединение прервано');
+      alert('Произошла ошибка, перезагрузите страницу')
+        window.location.reload()
+
+      
       socket = new WebSocket('ws://localhost:9000');
       deadHand()
     }
@@ -67,7 +69,7 @@ function deadHandSys() {
 
   sysSocket.onmessage = function (event) {
     let sysState = JSON.parse(event.data)
-    console.log(sysState);
+    //console.log(sysState);
             if (sysState.cpuTemp == null || sysState.cpuTemp == undefined) {
               sysState.cpuTemp = '...'
         } else {
@@ -76,7 +78,8 @@ function deadHandSys() {
         if (sysState.battery == null || sysState.battery == undefined) {
           sysState.battery = '...'
         }
-
+        console.log(fps)
+        fps = 0
         updateState(sysState)
   };
 
