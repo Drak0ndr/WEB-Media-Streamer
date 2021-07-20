@@ -94,7 +94,7 @@ function updateImg() {
 	//console.timeEnd('photo')
 	//console.time('image')
 	//console.time('read')
-	img = JSON.stringify(fs.readFileSync('Test.jpg', 'base64'))
+	img = JSON.stringify(fs.readFileSync('Test2.jpg', 'base64'))
 	//console.timeEnd('read')
 	//console.time('send')
 	imgBroadcast(img)
