@@ -44,8 +44,8 @@ function deadHand() {
       // например, сервер убил процесс или сеть недоступна
       // обычно в этом случае event.code 1006
       console.log('[close] Соединение прервано');
-      alert('Произошла ошибка, перезагрузите страницу')
-        window.location.reload()
+      // alert('Произошла ошибка, перезагрузите страницу')
+      //   window.location.reload()
 
       
       socket = new WebSocket('ws://localhost:9000');

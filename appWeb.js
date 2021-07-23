@@ -39,13 +39,13 @@ function onConnect(wsClient) {
 
 
 
-http.createServer(function (req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'text/plain',
-		'Access-Control-Allow-Origin': '*'
-	});
-	res.end(JSON.stringify(sysState));
-}).listen(3001, '0.0.0.0')
+// http.createServer(function (req, res) {
+// 	res.writeHead(200, {
+// 		'Content-Type': 'text/plain',
+// 		'Access-Control-Allow-Origin': '*'
+// 	});
+// 	res.end(JSON.stringify(sysState));
+// }).listen(3001, '0.0.0.0')
 
 http.createServer(function (req, res) {
 	res.writeHead(200, {
