@@ -108,6 +108,7 @@ body {
     color: #d0d0d0;
     font-size: 2.5vw;
     padding: 0.5vw;
+    position: relative;
 }
 
 .centerJoystik {
@@ -119,18 +120,23 @@ body {
 .joystick p {
     background-color: #5e5e5e;
     border-radius: 50%;
-    width: 4vw;
-    height: 4vw;
+    width: 3.5vw;
+    height: 3.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.joystick .joystickHeart  p {
+    width: 3vw;
+    height: 3vw;
+    font-size: 2vw;
 }
 .joystick p:hover {
     background-color: #6d6d6d;
 }
 .betweenJoystik {
-    margin-top: 1vw;
-    margin-bottom: 1.1vw;
+    margin-top: 1.7vw;
+    margin-bottom: 1.7vw;
     display: flex;
     justify-content: space-between;
 }

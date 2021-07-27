@@ -29,9 +29,9 @@ document.addEventListener('keyup', e => {
 
 function changeKeys(e) {
     if(e.type == 'keydown') {
-        if(docKeys[e.code.replace('Numpad', 'Key')].getAttribute('data-Down')) {
+        // if(docKeys[e.code.replace('Numpad', 'Key')].getAttribute('data-Down')) {
 
-        }
+        // }
         if(e.code != 'KeyY' && e.code != 'Numpad3') {
             docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = '#6d6d6d'
             sysState.keys[e.code] = true
