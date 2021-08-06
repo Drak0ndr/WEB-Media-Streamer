@@ -15,7 +15,7 @@ console.log(docKeys)
 let sysState = {
     keys: {
         KeyY: false,
-        Numpad3: false
+        Key3: false
     }
 }
 
@@ -34,20 +34,20 @@ function changeKeys(e) {
         // }
         if(e.code != 'KeyY' && e.code != 'Numpad3') {
             docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = '#6d6d6d'
-            sysState.keys[e.code] = true
+            sysState.keys[e.code.replace('Numpad', 'Key')] = true
         }
 
     } else {
         if(docKeys[e.code.replace('Numpad', 'Key')].getAttribute('data-Down')) {
-            sysState.keys[e.code] = !sysState.keys[e.code]
-            if(sysState.keys[e.code]) {
+            sysState.keys[e.code.replace('Numpad', 'Key')] = !sysState.keys[e.code.replace('Numpad', 'Key')]
+            if(sysState.keys[e.code.replace('Numpad', 'Key')]) {
                 docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = '#6d6d6d'
             } else {
                 docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = ''
             }
         } else {
             docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = ''
-            sysState.keys[e.code] = false
+            sysState.keys[e.code.replace('Numpad', 'Key')] = false
         }
 
     }
