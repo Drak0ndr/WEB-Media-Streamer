@@ -1,41 +1,60 @@
 const http = require('http')
-
-const keys = [['W', 'S'], ['A', 'D'], ['Q', 'E'], ['T', 'G'], ['F', 'G'],['Y'], ['I', 'K'], ['J', 'L'], ['8', '2'], ['4', '6'], ['3']]
+const Gpio = require('pigpio').Gpio;
+const keys = [['W', 'S'], ['A', 'D'], ['Q', 'E'], ['T', 'G'], ['F', 'H'],['Y'], ['I', 'K'], ['J', 'L'], ['8', '2'], ['4', '6'], ['3']]
 const pins = {
-    KeyW: 'Www',
-    KeyS: 'Sss',
-    KeyA: 'A',
-    KeyD: 'D',
-    KeyQ: 'Q',
-    KeyE: 'E',
-    KeyT: 'T',
-    KeyG: 'G',
-    KeyF: 'F',
-    KeyH: 'H',
-    KeyY: 'Y',
-    KeyI: 'I',
-    KeyK: 'K',
-    KeyJ: 'J',
-    KeyL: 'L',
-    Key8: '8',
-    key2: '2',
-    key4: '4',
-    Key6: '6',
-    Key3: '3'
+    KeyW: new Gpio(14, {mode: Gpio.OUTPUT}),
+    KeyS: new Gpio(15, {mode: Gpio.OUTPUT}),
+    KeyA: new Gpio(18, {mode: Gpio.OUTPUT}),
+    KeyD: new Gpio(23, {mode: Gpio.OUTPUT}),
+    KeyQ: new Gpio(24, {mode: Gpio.OUTPUT}),
+    KeyE: new Gpio(25, {mode: Gpio.OUTPUT}),
+    KeyT: new Gpio(8, {mode: Gpio.OUTPUT}),
+    KeyG: new Gpio(7, {mode: Gpio.OUTPUT}),
+    KeyF: new Gpio(12, {mode: Gpio.OUTPUT}),
+    KeyH: new Gpio(16, {mode: Gpio.OUTPUT}),
+    KeyY: new Gpio(20, {mode: Gpio.OUTPUT}),
+    KeyI: new Gpio(21, {mode: Gpio.OUTPUT}),
+    KeyK: new Gpio(2, {mode: Gpio.OUTPUT}),
+    KeyJ: new Gpio(3, {mode: Gpio.OUTPUT}),
+    KeyL: new Gpio(4, {mode: Gpio.OUTPUT}),
+    Key8: new Gpio(17, {mode: Gpio.OUTPUT}),
+    Key2: new Gpio(27, {mode: Gpio.OUTPUT}),
+    Key4: new Gpio(22, {mode: Gpio.OUTPUT}),
+    Key6: new Gpio(10, {mode: Gpio.OUTPUT}),
+    Key3: new Gpio(9, {mode: Gpio.OUTPUT})
 }
-function pinKey(key1, val1, key2, val2) {
-    console.log(key1, val1, key2, val2)
+
+keys.forEach(item => {
+    if(item.length == 2) {
+        pinKey(item[0], false, item[1], false)
+    }
+})
+function claw(key, val) {
+    pins[`Key${key}`].digitalWrite(val)
+}
+function pinKey(keyOne, val1, keyTwo, val2) {
+    console.log(keyOne, val1, keyTwo, val2)
     if(val1 && val2) {
-        console.log('не работает так')
+        try {
+            pins[`Key${keyOne}`].digitalWrite(0)
+            pins[`Key${keyTwo}`].digitalWrite(0)
+        }
+        catch {
+            
+        }
+
     } else if (val1 || val2) {
         if(val1) {
-            console.log(pins[`Key${key1}`])
+            pins[`Key${keyOne}`].digitalWrite(1)
+            pins[`Key${keyTwo}`].digitalWrite(0)
         }
         if(val2) {
-            console.log(pins[`Key${key2}`])
+            pins[`Key${keyOne}`].digitalWrite(0)
+            pins[`Key${keyTwo}`].digitalWrite(1)
         }
     } else {
-        console.log('ничего нет')
+        pins[`Key${keyOne}`].digitalWrite(0)
+        pins[`Key${keyTwo}`].digitalWrite(0)
     }
 }
 
@@ -53,9 +72,11 @@ http.createServer(function (req, res) {
         body = JSON.parse(body)
         console.time('time')
         keys.forEach(item => {
-            //if(item.length == 2) {
+            if(item.length == 2) {
                 pinKey(item[0], body[`Key${item[0]}`], item[1], body[`Key${item[1]}`])
-            //}
+            } else {
+                claw(item[0], body[`Key${item[0]}`])
+            }
         })
         console.timeEnd('time')
 		res.end('ok')
