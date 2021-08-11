@@ -24,6 +24,22 @@ const pins = {
     Key3: new Gpio(9, {mode: Gpio.OUTPUT})
 }
 
+const motor1 = new Gpio(5, {mode: Gpio.OUTPUT});
+const motor2 = new Gpio(6, {mode: Gpio.OUTPUT});
+const open = 2600
+const close = 400
+
+function panels(dir) {
+    if(dir == 'open') {
+        motor1.servoWrite(open)
+        setTimeout(function() {motor2.servoWrite(open)}, 500)
+        
+    } else {
+        motor1.servoWrite(close)
+        setTimeout(function() {motor2.servoWrite(close)}, 500)
+    }
+}
+
 keys.forEach(item => {
     if(item.length == 2) {
         pinKey(item[0], false, item[1], false)
