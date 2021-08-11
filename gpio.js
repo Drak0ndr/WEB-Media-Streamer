@@ -26,19 +26,30 @@ const pins = {
 
 const motor1 = new Gpio(5, {mode: Gpio.OUTPUT});
 const motor2 = new Gpio(6, {mode: Gpio.OUTPUT});
-const open = 2600
+const open = 2500
 const close = 400
 
+let comandDate = new Date()
+
 function panels(dir) {
-    if(dir == 'open') {
+    if(dir) {
+        if(dir == 'open') {
+            motor1.servoWrite(open)
+            setTimeout(function() {motor2.servoWrite(open)}, 500)
+            
+        } else {
+            motor1.servoWrite(close)
+            setTimeout(function() {motor2.servoWrite(close)}, 500)
+        }
+    } else if((new Date() - comandDate) >= (1 * 60 * 1000)) {
         motor1.servoWrite(open)
         setTimeout(function() {motor2.servoWrite(open)}, 500)
-        
     } else {
         motor1.servoWrite(close)
         setTimeout(function() {motor2.servoWrite(close)}, 500)
     }
 }
+setInterval(panels, 1000)
 
 keys.forEach(item => {
     if(item.length == 2) {
@@ -85,6 +96,7 @@ http.createServer(function (req, res) {
 		body += chunk.toString()
 	})
 	req.on('end', () => {
+        comandDate = new Date()
         body = JSON.parse(body)
         console.time('time')
         keys.forEach(item => {
