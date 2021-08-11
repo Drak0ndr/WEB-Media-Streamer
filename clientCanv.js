@@ -5,6 +5,7 @@ let base = 0
 let mediaTime = 40
 const cpuTemp = document.querySelector('.cpuTemp')
 const charg = document.querySelector('.charg')
+const panels = document.querySelector('.panelStatus')
 var context = img.getContext('2d');
 var imgCanv = new Image()
 img.width = (innerWidth / 100 * 85 / 100 * 80)
