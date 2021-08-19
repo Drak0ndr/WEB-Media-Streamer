@@ -29,7 +29,7 @@ const pins = {
 const motor1 = new Gpio(5, {mode: Gpio.OUTPUT});
 const motor2 = new Gpio(6, {mode: Gpio.OUTPUT});
 const open = 2500
-const close = 400
+const close = 500
 
 let comandDate = new Date()
 
@@ -62,9 +62,11 @@ function claw(key, val) {
     if(val) {
         pins[`Key${key}`].digitalWrite(1)
         pins[`Key${key}_sub`].digitalWrite(0)
+        setTimeout(function() {pins[`Key${key}`].digitalWrite(0)}, 1000)
     } else {
         pins[`Key${key}`].digitalWrite(0)
         pins[`Key${key}_sub`].digitalWrite(1)
+        setTimeout(function() {pins[`Key${key}_sub`].digitalWrite(0)}, 1000)
     }
     
 }

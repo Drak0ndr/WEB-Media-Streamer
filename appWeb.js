@@ -1,5 +1,5 @@
 var fs = require('fs')
-var http = require('http')
+// var http = require('http')
 var img = 'powered by Drakondr'
 var oldImg = ''
 var sysState = {}
@@ -47,25 +47,25 @@ function onConnect(wsClient) {
 // 	res.end(JSON.stringify(sysState));
 // }).listen(3001, '0.0.0.0')
 
-http.createServer(function (req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'text/plain',
-		'Access-Control-Allow-Origin': '*'
-	});
+// http.createServer(function (req, res) {
+// 	res.writeHead(200, {
+// 		'Content-Type': 'text/plain',
+// 		'Access-Control-Allow-Origin': '*'
+// 	});
 
-	let body = ''
-	req.on('data', chunk => {
-		body += chunk.toString()
-	})
-	req.on('end', () => {
-		//console.time('json')
-		//fs.writeFileSync('sysState.json', body);
-		//console.timeEnd('json')
-		console.log(body)
-		res.end('ok')
-	})
-	//console.log('request')
-}).listen(3256, '0.0.0.0')
+// 	let body = ''
+// 	req.on('data', chunk => {
+// 		body += chunk.toString()
+// 	})
+// 	req.on('end', () => {
+// 		//console.time('json')
+// 		//fs.writeFileSync('sysState.json', body);
+// 		//console.timeEnd('json')
+// 		console.log(body)
+// 		res.end('ok')
+// 	})
+// 	//console.log('request')
+// }).listen(3256, '0.0.0.0')
 
 console.log('Сервер работает')
 
