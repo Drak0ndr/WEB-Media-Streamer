@@ -13,6 +13,7 @@ const pins = {
     KeyF: new Gpio(12, {mode: Gpio.OUTPUT}),
     KeyH: new Gpio(16, {mode: Gpio.OUTPUT}),
     KeyY: new Gpio(20, {mode: Gpio.OUTPUT}),
+    KeyY_sub: new Gpio(26, {mode: Gpio.OUTPUT}),
     KeyI: new Gpio(21, {mode: Gpio.OUTPUT}),
     KeyK: new Gpio(2, {mode: Gpio.OUTPUT}),
     KeyJ: new Gpio(3, {mode: Gpio.OUTPUT}),
@@ -21,7 +22,8 @@ const pins = {
     Key2: new Gpio(27, {mode: Gpio.OUTPUT}),
     Key4: new Gpio(22, {mode: Gpio.OUTPUT}),
     Key6: new Gpio(10, {mode: Gpio.OUTPUT}),
-    Key3: new Gpio(9, {mode: Gpio.OUTPUT})
+    Key3: new Gpio(9, {mode: Gpio.OUTPUT}),
+    Key3_sub: new Gpio(11, {mode: Gpio.OUTPUT})
 }
 
 const motor1 = new Gpio(5, {mode: Gpio.OUTPUT});
@@ -57,7 +59,14 @@ keys.forEach(item => {
     }
 })
 function claw(key, val) {
-    pins[`Key${key}`].digitalWrite(val)
+    if(val) {
+        pins[`Key${key}`].digitalWrite(1)
+        pins[`Key${key}_sub`].digitalWrite(0)
+    } else {
+        pins[`Key${key}`].digitalWrite(0)
+        pins[`Key${key}_sub`].digitalWrite(1)
+    }
+    
 }
 function pinKey(keyOne, val1, keyTwo, val2) {
     console.log(keyOne, val1, keyTwo, val2)
