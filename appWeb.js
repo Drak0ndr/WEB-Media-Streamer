@@ -90,7 +90,7 @@ var telUpdate = setInterval(updateSysState, 1000)
 function updateImg() {
 	//console.time('updateImg')
 	//console.time('photo')
-	exec("fswebcam -r 640x360 --no-banner Test.jpg", () => {})
+	exec("fswebcam -r 640x360 --no-banner Test2.jpg", () => {})
 	//console.timeEnd('photo')
 	//console.time('image')
 	//console.time('read')
