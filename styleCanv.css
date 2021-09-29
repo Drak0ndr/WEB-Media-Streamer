@@ -5,13 +5,15 @@
 }
 
 body {
-    position: relative;
+    display: grid;
+    grid-template-columns: 17vw 68vw 15vw;
+    grid-template-rows: 70vh 30vh;
+    /* position: relative; */
     width: 100vw;
     height: 100vh;
 }
 .raspImg {
-    display: flex;
-    position: relative;
+
     background-color: black;
     background-size: contain;
     background-repeat: no-repeat;
@@ -40,12 +42,12 @@ body {
 }
 
 .tel {
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top: 0;
+    top: 0; */
     background-color: #e4f1f5;
-    width: 15vw;
-    height: 70vh;
+    /* width: 15vw;
+    height: 70vh; */
 }
 
 .tel h2 {
@@ -54,10 +56,11 @@ body {
 }
 
 .hands {
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100vw;
+    left: 0; */
+    /* width: 100vw; */
+    grid-column: 2/4;
     display: flex;
     justify-content: space-between;
     background-color: lightcyan;
@@ -91,8 +94,9 @@ body {
 }
 
 .handControl {
-    width: 20%;
+    /* width: 20%; */
     height: 100%;
+    grid-row: 1/3;
     background-color: #7a7e82;
     display: flex;
     flex-wrap: wrap;
@@ -187,4 +191,25 @@ body {
 
 .centerbtn:nth-child(1) {
     margin-bottom: 0.3vw;
+}
+
+.hand_joystick{
+    width: 12vw;
+    height: 12vw;
+    background-color: #424242;
+    border-radius: 50%;
+    margin-top: 0.5vh;
+    color: #d0d0d0;
+    padding: 0.5vw;
+    position: relative;
+}
+
+.hand_joystick p {
+    width: 2.5vw;
+    height: 2.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5e5e5e;
+    border-radius: 50%;
 }
