@@ -193,7 +193,7 @@ body {
     margin-bottom: 0.3vw;
 }
 
-.hand_joystick{
+.hand_joystick {
     width: 12vw;
     height: 12vw;
     background-color: #424242;
@@ -212,4 +212,32 @@ body {
     align-items: center;
     background-color: #5e5e5e;
     border-radius: 50%;
+}
+
+.hand_dir {
+    width: 12vw;
+    height: 6vw;
+    border-radius: 3vw;
+    background-color: #424242;
+    padding: 0.5vw;
+    color: #d0d0d0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5vh;
+}
+
+.hand_dir p {
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5e5e5e;
+    border-radius: 50%;
+}
+
+.hand_dir .betweenJoystik {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
