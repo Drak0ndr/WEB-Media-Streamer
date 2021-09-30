@@ -1,6 +1,6 @@
 const joystickPs = document.querySelectorAll('p')
 let docKeys = {}
-const down = ['KeyY', 'Key3']
+const down = ['KeyY', 'Key3', 'KeyQ', 'KeyO']
 joystickPs.forEach(item => {
     item.setAttribute("data-Key", `Key${item.textContent}`)
     down.forEach(num => {
@@ -15,7 +15,9 @@ console.log(docKeys)
 let sysState = {
     keys: {
         KeyY: false,
-        Key3: false
+        Key3: false,
+        KeyO: false,
+        KeyQ: false
     }
 }
 
@@ -32,7 +34,7 @@ function changeKeys(e) {
         // if(docKeys[e.code.replace('Numpad', 'Key')].getAttribute('data-Down')) {
 
         // }
-        if(e.code != 'KeyY' && e.code != 'Numpad3') {
+        if(e.code != 'KeyY' && e.code != 'Numpad3' && e.code != 'KeyQ' && e.code != 'KeyO') {
             docKeys[e.code.replace('Numpad', 'Key')].style.backgroundColor = '#6d6d6d'
             sysState.keys[e.code.replace('Numpad', 'Key')] = true
         }
