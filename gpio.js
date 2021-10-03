@@ -1,27 +1,29 @@
 const http = require('http')
 const Gpio = require('pigpio').Gpio;
-const keys = [['W', 'S'], ['A', 'D'], ['T', 'G'], ['F', 'H'],['Y'], ['I', 'K'], ['J', 'L'], ['8', '2'], ['4', '6'], ['3']]
+const keys = [['W', 'S'], ['A', 'D'], ['Q'], ['T', 'G'], ['F', 'H'],['Y'], ['I', 'K'], ['J', 'L'], ['O'], ['Z', 'X'], ['8', '2'], ['4', '6'], ['3']]
 const pins = {
     KeyW: new Gpio(14, {mode: Gpio.OUTPUT}),
     KeyS: new Gpio(15, {mode: Gpio.OUTPUT}),
     KeyA: new Gpio(18, {mode: Gpio.OUTPUT}),
     KeyD: new Gpio(23, {mode: Gpio.OUTPUT}),
+    KeyQ: new Gpio(11, {mode: Gpio.OUTPUT}),
     KeyT: new Gpio(8, {mode: Gpio.OUTPUT}),
     KeyG: new Gpio(7, {mode: Gpio.OUTPUT}),
     KeyF: new Gpio(12, {mode: Gpio.OUTPUT}),
     KeyH: new Gpio(16, {mode: Gpio.OUTPUT}),
     KeyY: new Gpio(20, {mode: Gpio.OUTPUT}),
-    KeyY_sub: new Gpio(26, {mode: Gpio.OUTPUT}),
     KeyI: new Gpio(21, {mode: Gpio.OUTPUT}),
     KeyK: new Gpio(2, {mode: Gpio.OUTPUT}),
     KeyJ: new Gpio(3, {mode: Gpio.OUTPUT}),
     KeyL: new Gpio(4, {mode: Gpio.OUTPUT}),
+    KeyO: new Gpio(26, {mode: Gpio.OUTPUT}),
+    KeyZ: new Gpio(13, {mode: Gpio.OUTPUT}),
+    KeyX: new Gpio(19, {mode: Gpio.OUTPUT}),
     Key8: new Gpio(17, {mode: Gpio.OUTPUT}),
     Key2: new Gpio(27, {mode: Gpio.OUTPUT}),
     Key4: new Gpio(22, {mode: Gpio.OUTPUT}),
     Key6: new Gpio(10, {mode: Gpio.OUTPUT}),
     Key3: new Gpio(9, {mode: Gpio.OUTPUT}),
-    Key3_sub: new Gpio(11, {mode: Gpio.OUTPUT})
 }
 
 const motor1 = new Gpio(5, {mode: Gpio.OUTPUT});
@@ -94,6 +96,14 @@ function pinKey(keyOne, val1, keyTwo, val2) {
     }
 }
 
+function servo(sr, val) {
+    if(val) {
+        pins[`Key${sr}`].servoWrite(close)
+    } else {
+        pins[`Key${sr}`].servoWrite(open)
+    }
+}
+
 http.createServer(function (req, res) {
 	res.writeHead(200, {
 		'Content-Type': 'text/plain',
@@ -112,7 +122,8 @@ http.createServer(function (req, res) {
             if(item.length == 2) {
                 pinKey(item[0], body[`Key${item[0]}`], item[1], body[`Key${item[1]}`])
             } else {
-                claw(item[0], body[`Key${item[0]}`])
+                // claw(item[0], body[`Key${item[0]}`])
+                servo(item[0], body[`Key${item[0]}`])
             }
         })
         console.timeEnd('time')
