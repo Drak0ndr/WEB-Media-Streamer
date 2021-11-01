@@ -241,3 +241,8 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
+.gps {
+    border: 1px solid black;
+    width: 15vw;
+    height: 20vw;
+}
