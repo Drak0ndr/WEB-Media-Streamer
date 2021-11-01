@@ -66,7 +66,6 @@ let canvk = {
     KeyZ: false
 }
 document.addEventListener('keyup', e => {
-    console.log(e.code)
     if (e.code == 'ArrowLeft') {
         dir -= 45
     }
@@ -102,7 +101,6 @@ let canvt = setInterval(function () {
     if (dir < 0) {
         dir += 360
     }
-    // console.log(dir)
     if (dir > 360) {
         dir = dir - 360
     }
