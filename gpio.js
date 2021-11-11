@@ -2,7 +2,7 @@ const http = require('http')
 const Gpio = require('pigpio').Gpio;
 const keys = [['W', 'S'], ['A', 'D'], ['Q'], ['T', 'G'], ['F', 'H'],['Y'], ['I', 'K'], ['J', 'L'], ['O'], ['Z', 'X'], ['8', '2'], ['4', '6'], ['3']]
 const pins = {
-    KeyW: new Gpio(14, {mode: Gpio.OUTPUT}),
+    KeyW: new Gpio(6, {mode: Gpio.OUTPUT}),
     KeyS: new Gpio(15, {mode: Gpio.OUTPUT}),
     KeyA: new Gpio(18, {mode: Gpio.OUTPUT}),
     KeyD: new Gpio(23, {mode: Gpio.OUTPUT}),
@@ -13,8 +13,8 @@ const pins = {
     KeyH: new Gpio(16, {mode: Gpio.OUTPUT}),
     KeyY: new Gpio(20, {mode: Gpio.OUTPUT}),
     KeyI: new Gpio(21, {mode: Gpio.OUTPUT}),
-    KeyK: new Gpio(2, {mode: Gpio.OUTPUT}),
-    KeyJ: new Gpio(3, {mode: Gpio.OUTPUT}),
+    KeyK: new Gpio(5, {mode: Gpio.OUTPUT}),
+    KeyJ: new Gpio(25, {mode: Gpio.OUTPUT}),
     KeyL: new Gpio(4, {mode: Gpio.OUTPUT}),
     KeyO: new Gpio(26, {mode: Gpio.OUTPUT}),
     KeyZ: new Gpio(13, {mode: Gpio.OUTPUT}),
