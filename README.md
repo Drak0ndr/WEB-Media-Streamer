@@ -20,3 +20,14 @@
  ```javascript
  sudo node gpio.js
  ```
+- для файла mpu нужно установить библиотеки
+ ```javascript
+ npm i i2c-bus
+ ```
+  ```javascript
+ i2c-mpu6050
+ ```
+ - и запустить 
+   ```javascript
+ sudo node mpu.js
+ ```
