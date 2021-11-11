@@ -26,7 +26,7 @@
  ```
  
   ```javascript
- i2c-mpu6050
+ npm i i2c-mpu6050
  ```
  
  - и запустить 
