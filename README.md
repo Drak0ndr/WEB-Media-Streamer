@@ -32,5 +32,5 @@
  - и запустить 
  
    ```javascript
- sudo node mpu.js
+   sudo node mpu.js
  ```
