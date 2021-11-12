@@ -24,13 +24,11 @@
  ```javascript
  npm i i2c-bus
  ```
- 
-  ```javascript
+ ```javascript
  npm i i2c-mpu6050
  ```
  
  - и запустить 
- 
-   ```javascript
+ ```javascript
    sudo node mpu.js
  ```
